@@ -16,3 +16,12 @@ server.listen(port, function(){
 	console.log('HTTP server listening on port ' + port );
 });
 
+var io = require('socket.io')(server);
+
+io.on('connection', socket => {
+	
+	socket.on('test', (data) => {
+		console.log(JSON.stringify(data));
+		socket.emit('test-test', 'OK');
+	});
+});
