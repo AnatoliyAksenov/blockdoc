@@ -8,10 +8,6 @@
  * Controller of the blockdocApp
  */
 angular.module('blockdocApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($location) {
+      console.log('MainCtrl called with $location: ', $location);
   });

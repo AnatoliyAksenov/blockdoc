@@ -8,6 +8,6 @@
  * Controller of the blockdocApp
  */
 angular.module('blockdocApp')
-  .controller('AboutCtrl', function () {
-      console.log('AboutCtrl called');
+  .controller('ContactCtrl', function () {
+    console.log('ContactCtrl called');
   });
