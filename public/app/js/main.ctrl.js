@@ -34,6 +34,19 @@
             console.log('CHAIN clicked');
         };
 
+        mainCtrl.ethAddrr = "";
+        mainCtrl.ethAddrrIsValid = false;
+        mainCtrl.onAdressUpdate = function() {
+            mainCtrl.ethAddrrIsValid = isAddress(mainCtrl.ethAddrr);
+            var result= mainCtrl.ethAddrrIsValid ? "valid" : "invalid";
+            console.log('>>> address is ', result, mainCtrl.ethAddrr);
+            return mainCtrl.ethAddrrIsValid;
+
+            function isAddress(address) {
+                return /^(0x)?[0-9a-f]{40}$/i.test(address);
+            }
+        };
+
         mainCtrl.sign = function() {
             console.log('SIGN clicked');
         };
