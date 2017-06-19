@@ -10,11 +10,12 @@
         console.log('MainCtrl called');
 
         mainCtrl.docfile = "";
-        mainCtrl.selectedParty = ""
+        mainCtrl.selectedParty = "";
         mainCtrl.counterparts = [];
         mainCtrl.docContent = "";
 
         mainCtrl.header = "Welcome to BlockSign";
+
         mainCtrl.onFileSelected = function(element) {
             mainCtrl.docfile = element.files[0];
             var fileReader = FileReader.readAsText(mainCtrl.docfile, $scope)
@@ -44,7 +45,7 @@
         mainCtrl.parties = [
             {name: 'ABC Bank Inc.', address: '0x11111'},
             {name: 'BAC Holding Inc.', address: '0x2222'},
-            {name: 'CBA Trading Lpc.', address: '0x3333'},
+            {name: 'CBA Trading Lpc.', address: '0x3333'}
         ]
 
     }
