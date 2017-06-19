@@ -21,7 +21,7 @@
 
 				let document = {};
 				document.abi =[{"constant":false,"inputs":[{"name":"_hash","type":"bytes32"},{"name":"_second","type":"address"}],"name":"init","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_hash","type":"bytes32"}],"name":"agrParties","outputs":[{"name":"_first","type":"address"},{"name":"_second","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_hash","type":"bytes32"}],"name":"sign","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_hash","type":"bytes32"}],"name":"agrStatus","outputs":[{"name":"_status","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"changeOwner","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_hash","type":"bytes32"}],"name":"agrCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_hash","type":"bytes32"}],"name":"agrSigned","type":"event"}];
-				document.address = '0xf1b7c2c0bf212d7d4f31ac119b02875f5e390b8c';
+				document.address = '0xaab59984e05d878de2c52d87863317a917d1a0f6';
 				$scope.contracts.document = document;
 
 				if($window.web3 !== undefined){

@@ -25,15 +25,23 @@
     
     $scope.test = {};
 
+    $scope.signed = false;
+    $scope.checked = false;
+
     $scope.init = function(){
       
     };
 
     $scope.check = function(){
+       startLoading();
        let document = $scope.$parent.contracts.document.contract;
        let sha256 = $window.CryptoJS.SHA256($scope.file.data);
-       document.agrStatus.call(sha256, (err, data) => {
-        console.log(data);
+       console.log(sha256);
+       document.agrStatus.call($window.web3.toBigNumber(sha256.toString()), (err, data) => {
+         stopLoading();
+         console.log(data);
+         $scope.signed = data.c.length > 1;
+         $scope.checked = true;
        });
     }
     

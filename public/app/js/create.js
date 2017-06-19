@@ -46,8 +46,6 @@
         function isAddress(address) {
             return /^0x[0-9a-f]{40,40}$/i.test(address);
         }
-
-        //TODO написать функцию проверки переменной $scope.ethAddrr в сервисе https://sing.me
     };
     
     $scope.check_account = function(){
