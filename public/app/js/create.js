@@ -19,50 +19,33 @@
   };
   
   
-  Create.$inject = ['$scope', 'dataAssistant'];
+  Create.$inject = ['$scope', '$timeout', 'dataAssistant'];
 
-  function Create($scope, dataAssistant){
+  function Create($scope, $timeout, dataAssistant){
     $scope.file = {};
     $scope.init = function(){
       
     };
 
-    $scope.onAddressUpdate = function(ethAddr) {
-            // remove style
-            $element.find("#ethAddressFormGroup").removeClass(".has-success");
-            $element.find("#ethAddressFormGroup").removeClass(".has-error");
-            $element.find("#addressIsValidIcon").hide();
-            $element.find("#addressErrorIcon").hide();
-
+    $scope.onAddressUpdate = function() {
             $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
-            console.log('>>> address is ' + $scope.ethAddrrIsValid ? "valid" : "invalid", $scope.ethAddrr);
+            var result = $scope.ethAddrrIsValid ? "valid" : "invalid";
 
-            if (!$scope.ethAddrrIsValid) return;
-
-            $element.find("#checkingAddress").show();
-            //TODO написать функцию проверки переменной $scope.ethAddrr в сервисе https://sing.me
-            checkAddressInSignMe($scope.ethAddrr, function(isOk) {
-              $element.find("#checkingAddress").hide();
-              if (isOk) {
-                  setAddressValid();
-              } else {
-                  setAddressError();
-              }
-            });
-
-            function isAddress(address) {
-                return /^0x[0-9a-f]{40,40}$/i.test(address);
+            // FIXME: replace $timeout with checkAddressInSignMe() when it is ready
+            if ($scope.ethAddrrIsValid) {
+              $timeout(3000)
+                  .then( ()=> $scope.ethAddrrIsConfirmed = true )
+            } else {
+                $scope.ethAddrrIsConfirmed = false;
             }
 
-            function setAddressValid() {
-              $element.find("#ethAddressFormGroup").addClass(".has-success");
-              $element.find("#addressIsValidIcon").show();
-            }
+            console.log('>>> address is ', result, $scope.ethAddrr);
 
-            function setAddressError() {
-                $element.find("#ethAddressFormGroup").removeClass(".has-error");
-                $element.find("#addressErrorIcon").show();
-            }
+        function isAddress(address) {
+            return /^0x[0-9a-f]{40,40}$/i.test(address);
+        }
+
+        //TODO написать функцию проверки переменной $scope.ethAddrr в сервисе https://sing.me
     };
     
     $scope.check_account = function(){
