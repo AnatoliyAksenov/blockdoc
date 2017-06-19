@@ -12,6 +12,7 @@
         <!--Eth Address-->
         <div id="ethAddressFormGroup" class="form-group col-sm-6 has-feedback"
              ng-class="ethAddrrIsValid ? 'has-success' : 'has-error'">
+
             <label class="control-label"  for="ethAddress">Ethereum Address</label>
 
             <div class="input-group">
@@ -30,6 +31,9 @@
                         <i class="fa fa-cog fa-spin fa-1x fa-fw form-control-feedback" style="color:#777" aria-hidden="true"
                           ng-show="ethAddrrIsValid && !ethAddrrIsConfirmed"></i>
                         <!--<span id="inputGroupSuccess1Status" class="sr-only">(success)</span>-->
+            </div>
+            <div class="alert alert-success" ng-show="ethAddrrIsValid && ethAddrrIsConfirmed">
+                <strong>The party joined</strong> the Agreement on Acceptance of Addresses
             </div>
         </div>
 
