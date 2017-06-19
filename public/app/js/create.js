@@ -31,17 +31,43 @@
             function isAddress(address) {
                 return /^0x[0-9a-f]{40,40}$/i.test(address);
             }
-            
+            /*
+             $element.find("#ethAddressFormGroup").removeClass(".has-success");
+             $element.find("#ethAddressFormGroup").removeClass(".has-error");
+             $element.find("#addressIsValidIcon").hide();
+             $element.find("#addressErrorIcon").hide();
+             */
             $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
             var result = $scope.ethAddrrIsValid ? "valid" : "invalid";
 
             console.log('>>> address is ', result, $scope.ethAddrr);
             
 
-            
-            return $scope.ethAddrrIsValid;
+            $element.find("#checkingAddress").show();
+            //TODO написать функцию проверки переменной $scope.ethAddrr в сервисе https://sing.me
+            checkAddressInSignMe($scope.ethAddrr, function(isOk) {
+              $element.find("#checkingAddress").hide();
+              if (isOk) {
+                  setAddressValid();
+              } else {
+                  setAddressError();
+              }
+            });
 
-    }
+            function isAddress(address) {
+                return /^0x[0-9a-f]{40,40}$/i.test(address);
+            }
+
+            function setAddressValid() {
+              $element.find("#ethAddressFormGroup").addClass(".has-success");
+              $element.find("#addressIsValidIcon").show();
+            }
+
+            function setAddressError() {
+                $element.find("#ethAddressFormGroup").removeClass(".has-error");
+                $element.find("#addressErrorIcon").show();
+            }
+    };
     
     $scope.check_account = function(){
       if($scope.$parent.contracts.agreement.contract){
@@ -50,7 +76,7 @@
           console.log(data);
         });
       }
-    }
+    };
 
     $scope.create = function(){
       dataAssistant.post('https://sandbox.sign.me/signapi/sjson', JSON.stringify({
