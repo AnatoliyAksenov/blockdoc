@@ -27,23 +27,19 @@
       
     }
 
-    $scope.onAdressUpdate = function(ethAddr) {
+    $scope.onAdressUpdate = function() {
+            function isAddress(address) {
+                return /^0x[0-9a-f]{40,40}$/i.test(address);
+            }
+            
             $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
+
             console.log('>>> address is ' + $scope.ethAddrrIsValid ? "valid" : "invalid", $scope.ethAddrr);
+            
+
+            
             return $scope.ethAddrrIsValid;
 
-            function isAddress(address) {
-                if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
-                    // check if it has the basic requirements of an address
-                    return false;
-                } else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) {
-                    // If it's all small caps or all all caps, return true
-                    return true;
-                } /* else {
-                    // Otherwise check each case
-                    return isChecksumAddress(address);
-                } */
-            }
     }
     
     $scope.check_account = function(){

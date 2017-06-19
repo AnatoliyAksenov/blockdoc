@@ -9,6 +9,7 @@
 
     function MainController($scope, dataAssistant, socketUtils, $timeout, $window) {
     	$scope.page = 'create';
+			$scope.main_aggreement = 'Вступая в ряды присоединившихся торжественно клянусь достойно использовать адрес ';
 			$scope.contracts = {};
 
 			$scope.init = function(){
