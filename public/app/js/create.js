@@ -19,17 +19,18 @@
   };
   
   
-  Create.$inject = ['$scope', 'dataAssistant'];
+  Create.$inject = ['$scope', 'dataAssistant', '$window'];
 
-  function Create($scope, dataAssistant){
+  function Create($scope, dataAssistant, $window){
     $scope.file = {};
+
     $scope.init = function(){
       
     }
 
     $scope.onAdressUpdate = function() {
-            function isAddress(address) {
-                return /^0x[0-9a-f]{40,40}$/i.test(address);
+            function isAddress(address) {                
+                return /^0x[0-9a-f]{40}$/i.test(address);
             }
             
             $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
@@ -46,7 +47,9 @@
       if($scope.$parent.contracts.agreement.contract){
         let agreement = $scope.$parent.contracts.agreement.contract;
         agreement.get.call((err, data) => {
-          console.log(data);
+          let main_agreement = $scope.$parent.main_agreement;
+          
+          console.log(data + ' ' + $window.CryptoJS.SHA256(main_agreement));
         });
       }
     }
