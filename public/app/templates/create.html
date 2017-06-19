@@ -1,10 +1,11 @@
 <div ng-init="init()">
     <h4>Создать</h4>
+    <p></p>
     <form >
 
         <!--File-->
         <div class="form-group col-sm-6" style="padding-left: 0">
-            <label for="exampleInputFile">Документ</label>
+            <label for="exampleInputFile">Документ на подпись</label>
             <input type="file" id="exampleInputFile">
             <p class="help-block">Инициализировать документ на подпись</p>
         </div>
@@ -12,7 +13,7 @@
         <!--Eth Address-->
         <div id="ethAddressFormGroup" class="form-group col-sm-6 has-feedback"
              ng-class="ethAddrrIsValid ? 'has-success' : 'has-error'" style="padding-left: 0">
-            <label class="control-label"  for="ethAddress">Ethereum Address</label>
+            <label class="control-label"  for="ethAddress">Ethereum адрес второй стороны</label>
 
             <div class="input-group">
                 <span class="input-group-addon">
@@ -40,7 +41,7 @@
         <div class="form-group">
 
             <div class="col-sm-12" style="padding-left: 0">
-                <button type="submit" class="btn btn-danger" ng-click="create()">Create</button>
+                <button type="submit" class="btn btn-primary" ng-click="create()">Отправить</button>
             </div>
         </div>
     </form>
