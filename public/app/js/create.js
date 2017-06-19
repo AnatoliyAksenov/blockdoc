@@ -33,8 +33,9 @@
             }
             
             $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
+            var result = $scope.ethAddrrIsValid ? "valid" : "invalid";
 
-            console.log('>>> address is ' + $scope.ethAddrrIsValid ? "valid" : "invalid", $scope.ethAddrr);
+            console.log('>>> address is ', result, $scope.ethAddrr);
             
 
             
