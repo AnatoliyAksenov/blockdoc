@@ -1,12 +1,20 @@
 <div ng-init="init()">
     <h4>Проверить</h4>
-    <p>Проверить статус документа</p>
-    <form>
-        <div class="form-group">
-            <label for="exampleInputFile">Документ</label>
-            <input type="file" id="exampleInputFile" id="file" ng-model="file">
-            <p class="help-block" >Инициализировать документ на подпись</p>
+    <form >
+
+        <!--File-->
+        <div class="form-group col-sm-6" style="padding-left: 0">
+            <label for="check_file">Документ</label>
+            <input type="file" class='btn btn-default btn-file' id="check_file">
+            <p class="help-block">Проверить</p>
         </div>
-        <button type="button" class="btn btn-warning" ng-click="pay()">Check</button>
-    </form>    
+
+        <!--Submit-->
+        <div class="form-group">
+
+            <div class="col-sm-12" style="padding-left: 0">
+                <button type="submit" class="btn btn-danger" ng-click="check()">Проверить</button>
+            </div>
+        </div>
+    </form>
 </div>
