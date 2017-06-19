@@ -1,8 +1,11 @@
 <div ng-init="init()">
+    <h4>Проверить</h4>
+    <p>Проверить статус документа</p>
     <form>
         <div class="form-group">
-            <label for="file">Upload file</label>
-            <input type="text" class="form-control" id="file" placeholder="Select local file for upload" ng-model="file">
+            <label for="exampleInputFile">Документ</label>
+            <input type="file" id="exampleInputFile" id="file" ng-model="file">
+            <p class="help-block" >Инициализировать документ на подпись</p>
         </div>
         <button type="button" class="btn btn-warning" ng-click="pay()">Check</button>
     </form>    
