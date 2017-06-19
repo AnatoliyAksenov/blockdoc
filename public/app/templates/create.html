@@ -1,8 +1,11 @@
 <div ng-init="init()">
     <form>
         <div class="form-group">
-            <label for="file">Upload file</label>
-            <input type="text" class="form-control" id="file" placeholder="Select local file for upload" ng-model="file">
+
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                <span class="btn btn-default btn-file"><span>Choose file</span><input id="create_file" type="file" /></span>
+                <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+            </div>
         </div>
         <button type="button" class="btn btn-danger" >Create</button>
     </form>
