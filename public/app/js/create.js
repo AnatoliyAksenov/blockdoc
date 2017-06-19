@@ -28,14 +28,14 @@
     };
 
     $scope.onAddressUpdate = function(ethAddr) {
-            $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
-            console.log('>>> address is ' + $scope.ethAddrrIsValid ? "valid" : "invalid", $scope.ethAddrr);
-
             // remove style
             $element.find("#ethAddressFormGroup").removeClass(".has-success");
             $element.find("#ethAddressFormGroup").removeClass(".has-error");
             $element.find("#addressIsValidIcon").hide();
             $element.find("#addressErrorIcon").hide();
+
+            $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
+            console.log('>>> address is ' + $scope.ethAddrrIsValid ? "valid" : "invalid", $scope.ethAddrr);
 
             if (!$scope.ethAddrrIsValid) return;
 
