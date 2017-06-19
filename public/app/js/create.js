@@ -19,9 +19,9 @@
   };
   
   
-  Create.$inject = ['$scope', 'dataAssistant', '$window'];
+  Create.$inject = ['$scope', '$timeout', 'dataAssistant', '$window'];
 
-  function Create($scope, dataAssistant, $window){
+  function Create($scope, $timeout, dataAssistant, $window){
     $scope.file = {};
     $scope.check_result = false;
 
@@ -30,7 +30,24 @@
     };
 
     $scope.onAddressUpdate = function() {
-         
+            $scope.ethAddrrIsValid = isAddress($scope.ethAddrr);
+            var result = $scope.ethAddrrIsValid ? "valid" : "invalid";
+
+            // FIXME: replace $timeout with checkAddressInSignMe() when it is ready
+            if ($scope.ethAddrrIsValid) {
+              $timeout(3000)
+                  .then( ()=> $scope.ethAddrrIsConfirmed = true )
+            } else {
+                $scope.ethAddrrIsConfirmed = false;
+            }
+
+            console.log('>>> address is ', result, $scope.ethAddrr);
+
+        function isAddress(address) {
+            return /^0x[0-9a-f]{40,40}$/i.test(address);
+        }
+
+        //TODO написать функцию проверки переменной $scope.ethAddrr в сервисе https://sing.me
     };
     
     $scope.check_account = function(){
@@ -64,7 +81,8 @@
       }
     };
 
-    $scope.create = function(){
+    $scope.create_file = function(){
+
       dataAssistant.post('https://sandbox.sign.me/signapi/sjson', JSON.stringify({
         "filet": $scope.file.data, 
         "fname": $scope.file.filename, 
@@ -80,6 +98,14 @@
           alert(`Can't create file signature.`);
         }
       });
+    }
+
+    $scope.create = function(){
+       let document = $scope.$parent.contracts.document.contract;
+       let sha256 = $window.CryptoJS.SHA256($scope.file.data);
+       document.init.sendTransaction(sha256, $scope.ethAddrr, (err, transaction) => {
+        console.log(transaction);
+       });
     }
 
     $scope.assign_agreement = function(){

@@ -1,9 +1,20 @@
 <div ng-init="init()">
-    <form>
-        <div class="form-group">
-            <label for="file">Upload file</label>
-            <input type="text" class="form-control" id="file" placeholder="Select local file for upload" ng-model="file">
+    <h4>Подписать</h4>
+    <form >
+
+        <!--File-->
+        <div class="form-group col-sm-6" style="padding-left: 0">
+            <label for="exampleInputFile">Документ</label>
+            <input type="file" class='btn btn-default btn-file' id="exampleInputFile">
+            <p class="help-block">Подписать</p>
         </div>
-        <button type="button" class="btn btn-default" >Accept</button>
+
+        <!--Submit-->
+        <div class="form-group">
+
+            <div class="col-sm-12" style="padding-left: 0">
+                <button type="submit" class="btn btn-danger" ng-click="assign()">Подписать</button>
+            </div>
+        </div>
     </form>
 </div>

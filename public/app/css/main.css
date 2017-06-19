@@ -11,8 +11,8 @@
         color: #D8D8D8;
         font-family: "Righteous",cursive;
         display: block;
-        font-size: 20px;
-        line-height: 50px;
+        font-size: 24px;
+        line-height: 55px;
       }
       
       #logo a:hover {
@@ -26,7 +26,7 @@
       
       .nav.main-menu > li > a, .nav.msg-menu > li > a {
         text-align: center;
-        color:#9C9A78;
+        color: #6c6a4e;
         min-height: 40px;
         -webkit-transition: 0.05s;
         -moz-transition: 0.05s;
@@ -41,7 +41,7 @@
       .nav.main-menu > li > a:hover, .nav.main-menu > li > a:focus, .nav.main-menu > li.active > a, .nav.main-menu .open > a, .nav.main-menu .open > a:hover, .nav.main-menu .open > a:focus, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu > li.active > a,
       .nav.msg-menu > li > a:hover, .nav.msg-menu > li > a:focus, .nav.msg-menu > li.active > a, .nav.msg-menu .open > a, .nav.msg-menu .open > a:hover, .nav.msg-menu .open > a:focus {
         background:rgba(0, 0, 0, 0.1);
-        color:#f0f0f0;
+        color: #727272;
       }
       
       .nav.main-menu a.active, .nav.msg-menu a.active {
@@ -110,7 +110,7 @@
       }
       
       #main {
-        margin-top: 50px;
+        margin-top: 10px;
         min-height: 800px;
         overflow: hidden;
       }
@@ -159,3 +159,9 @@
           width: 40%;
         }
       }
+
+      h4+p {
+          color: #737373;
+          margin-bottom: 15px;
+      }
+
