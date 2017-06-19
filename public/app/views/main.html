@@ -1,10 +1,49 @@
 <div class="jumbotron">
   <p class="lead">
-    Welcome to BlockSign!
+    {{MainCtrl.header}}
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Got it!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <form>
+    <span ng-hide="mainCtrl.docContent"><em>
+      Please select a document file to process...<br />
+    </em></span>
+    <input type="file" name="docfile" onchange="angular.element(this).scope().mainCtrl.onFileSelected(this);" />
+  </form>
+  <div>
+    <span ng-show="mainCtrl.docContent">
+      <b>Preview</b><br />
+      <textarea class="form-control" rows="10">
+      {{mainCtrl.docContent}}
+      </textarea>
+      <br />
+    </span>
+  </div>
+  <div>
+    <span>
+      Counterparty:&nbsp;
+      <select
+              ng-model="mainCtrl.selectedParty"
+              data-ng-options="name as party.name for party in mainCtrl.parties"
+              ng-change="mainCtrl.onCounterpartsSelected(mainCtrl.selectedParty)"><!-- track by party.name-->
+          <option value="">select...</option>
+      </select>
+      {{mainCtrl.counterpart}}
+    </span>
+  </div>
 </div>
 
 <div class="row marketing">
-  <h4>About page</h4>
+  <p class="text-center">
+    <button class="btn btn-lg btn-primary" ng-disabled="!mainCtrl.docContent" ng-click="mainCtrl.chain()">
+      BlockChain it!
+      <span class="glyphicon glyphicon-upload"></span>
+    </button>
+    <button class="btn btn-lg btn-success" ng-disabled="!mainCtrl.docContent" ng-click="mainCtrl.sign()">
+      Sign it
+      <span class="glyphicon glyphicon-ok"></span>
+    </button>
+    <button class="btn btn-lg btn-info" ng-disabled="!mainCtrl.docContent" ng-click="mainCtrl.verify()">
+      Verify it
+      <span class="glyphicon glyphicon-question-sign"></span>
+    </button>
+  </p>
 </div>
